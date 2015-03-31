@@ -1,4 +1,4 @@
-# RMcGhee.github.io
+### RMcGhee.github.io
 
 Just a repo for my portfolio, still in progress.
 
