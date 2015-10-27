@@ -44,15 +44,17 @@
 <a name="smart_thermostat"></a>
 <h2>Single room smart thermostat</h2>
 
-<!-- <p><img src="image name here" alt="Enclosure powers both the duplex and the arduino."></p> -->
+<p><img src="images/therm_1.jpg" alt="Enclosure powers both the duplex and the arduino."></p>
 <h3>What is it?</h3>
-<p>This project uses C code on an Arduino Pro Mini to match room temperature to sleep wake cycles. A few <a href="http://www.ncbi.nlm.nih.gov/pubmed/9322266">studies</a> have shown a correlation between body temperature and the sleep wake cycle. In particular, <a href="http://www.ncbi.nlm.nih.gov/pubmed/18761026">this study</a> found convincing data to suggest that peripheral body temperature may serve as a key indicator of the body's impetus to sleep. This smart thermostat attempts to raise the comfort level of those sleeping in the room and dropping the temperature of the room throughout the night. <br>
+<p>This project uses C code on an Arduino Pro Mini to match room temperature to sleep wake cycles. A few <a href="http://www.ncbi.nlm.nih.gov/pubmed/9322266">studies</a> have shown a correlation between body temperature and the sleep wake cycle. In particular, <a href="http://www.ncbi.nlm.nih.gov/pubmed/18761026">this study</a> found convincing data to suggest that peripheral body temperature may serve as a key indicator of the body's impetus to sleep. This smart thermostat starts out the night with a comfortable temperature for going to sleep, and drops the temperature throughout the night to provide optimal conditions for deep sleep. <br>
+<p><img src="images/therm_2.jpg" alt="An extra power supply was sacrificed for this cause."></p><br>
 <h3>Motivation</h3>
 	 - Reduce energy usage by warming the room only when the occupants will be sleeping in it.<br>
 	 - Make the room more comfortable for the occupants to fall asleep in. When peripheral body temperature drops, a subject starts to feel chilly. By raising the temperature of the room at the beginning of the night, this effect is counteracted.<br>
 	 - Reduce the temperature of the room throughout the night to provide a more optimal environment for deep sleep. As core body temperature drops, subjects are more likely to enter REM sleep, which is theorized to be an important part of the sleep cycle. Dropping the environmental temperatures make it easier for the body to enter this state. <br><br>
+<p><img src="images/therm_3.jpg" alt="Pro mini, RTC, and potentiometers for setting temperature and start/end times."></p>
 <h3>Solution</h3>
-My solution involves using an arduino to monitor the time and the environmental temperatures. The time interval and initial temperature settings are determined by the user using three labelled potentiometers. A space heater is plugged into a duplex outlet that is powered by a relay that is controlled by the arduino. As the night goes on, the set temperature drops as a percentage of the time interval that has passed.<br> <br>
+My solution involves using an arduino to monitor the time and the environmental temperatures. The time interval and initial temperature settings are determined by the user using three labelled potentiometers. A space heater is plugged into a duplex outlet that is powered by a relay that is controlled by the arduino. As the night goes on, the set temperature drops as a percentage of the time interval that has passed. Within an hour of the set 'wake up' time, the temperature rises again to make waking up more comfortable.<br> <br>
 <h3>Future modifications</h3>
 This kind of device will become more common as the Internet of Things finds its way into our lives. In particular, a smart watch that monitors wrist temp (shown to be a key indicator of impending sleep by the above mentioned article) will be able to warm and cool a room based on the wearer's likeliness to initiate sleep. In fact, this could be used in conjunction with a sleep reminder system that helps people start and maintain a healthy sleep pattern. 
 </p>
@@ -67,12 +69,12 @@ This project uses Python on a RaspberryPi to implement a 3 axis DSLR mount for a
 
 <h3>Motivation</h3>
 - Given the proper data set, an alt-az-rot mount can track a wider variety of objects than a German Equatorial mount.<br>
-- An alt-az-rot mount can be calibrated using software to align it properly with the celestial sphere, a German Equatorial Mount cannot.<br>
+- An alt-az-rot mount can be calibrated using software to align it properly with the celestial sphere, a German Equatorial Mount can't.<br>
 - Good mounts are expensive. I quite enjoy astro photography, and this was a way to spend more time on it.<br><br>
 <img src="images/astro_3.jpg" alt="">
 
 <h3>Solution</h3>
-A program written in Python, using tkinter for the interface, and running on a RaspberryPi with a touchscreen for user input. The mathematics of tracking an object and moving to an object are complete. Currently still pending is software calibration, completion of the GUI, and hardware.
+A program written in Python, using tkinter for the interface, and running on a RaspberryPi with a touchscreen for user input. The mathematics of tracking an object and moving to an object are complete. The program will interface with the camera as an intervalometer. Currently still pending is software calibration, completion of the GUI, and hardware.
 <img src="images/astro_4.jpg" alt="">
 </p><br>
 <a name="prime_finder"></a>
@@ -80,12 +82,12 @@ A program written in Python, using tkinter for the interface, and running on a R
 <br><br>
 <img src="images/PrimeFinder.jpg" alt="Python program for a display piece">
 <h3>What is it?</h3>
-PrimeFinder is the base code for a display piece. It finds prime numbers in sequential order and displays them, along with information about the average time to find each prime, and how many primes have been found to date.<br><br>
+PrimeFinder is the base code for a display piece. It finds prime numbers in sequential order and displays them, along with information about the average time to find each prime, and how many primes have been found since the program started.<br><br>
 <h3>Motivation</h3>
 - Prime numbers are pretty neat.<br>
 - I'm planning a display piece that will constantly update information about the primes it has found, as well as information about how it found them.<br><br>
 <h3>Solution</h3>
-A python program that uses tkinter for the GUI. As the dispaly piece comes together, other information about the primes will be included, like a graph of how far apart primes are from their predecessor, and special colors for twin primes.
+A python program that uses tkinter for the GUI. As the display piece comes together, other information about the primes will be included, like a graph of how far apart primes are from their predecessor, and special colors for twin primes.
 
 <p>My portfolio is at <a href="http://RMcGhee.github.io/">http://RMcGhee.github.io/</a></p>
       </section>
