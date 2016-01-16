@@ -489,8 +489,8 @@ function sizeColumns(div_width, div_height){
 	var ex_div = document.getElementById("ex_about");
 	
 	div.style.width = div_width+"px";
-	div.style.height = div_height+"px";
-	ex_div.style.height = (div_height-90)+"px";
+	div.style.display = "inline-block;";
+	ex_div.style.height = (div.getBoundingClientRect().bottom-160)+"px";
 	
 	for(i = 0; i < num_canv; i++){
 		div = document.getElementById("section"+i);
