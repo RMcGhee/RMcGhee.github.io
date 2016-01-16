@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Compensation Comparison</title>
+		<link rel="stylesheet" href="./styles.css">
+		<script src="./COL_Data.js"></script>
+		<script src="./Chart.min.js"></script>
+		<script src="./Chart.StackedBar.js"></script>
+	</head>
+	<body>
+		<div id="nav">
+			<ul id="nav_inner">
+				<a href="#form" title="Salaries"><li id="salaries">Salaries</li></a>
+				<a href="#section0"><li id="nav0">Naive Comparison</li></a>
+				<a href="#section1"><li id="nav1">After Essentials</li></a>
+				<a href="#section2"><li id="nav2">Savings</li></a>				
+				<a href="#section3"><li id="nav3">Cost of a House</li></a>
+			</div>
+		</div>
+		<div id="graph_column">
+			<div id="form">
+				<input type="number" id="first_salary" placeholder="City 1 Salary" class="salary_input" onkeypress="keyPress(event)">
+				<input type="number" id="second_salary" placeholder="City 2 Salary" class="salary_input" onkeypress="keyPress(event)"><br>
+				<select id= "first_city" class="salary_input"></select>
+				<select id="second_city" class="salary_input"></select>
+				<button id="b_compute" type="button">Computate!</button>
+			</div>
+		</div>
+		<div id="ex_column">
+			<div id="ex_section0" class="explanation">
+				<h2>Naive comparison</h2>
+				<p>
+					A naive comparison normalizes both salaries to a median cost of living.
+					This comparison is weak because it assumes that all income is taken up
+					by the cost of living, which is often not the case.<br><br> Example: Assume the
+					cost of living in city A is $1.00 and the cost of living in city B is
+					$2.00. If you earn $5.00 in city A, <b>naive</b> COL assesment shows you need
+					to earn $10.00 in city B to have the same amount of disposable income.
+					Simple math shows otherwise: if you earn $5.00 in city A, you only need a pay increase of
+					$1.00 (20%) to live in city B with the same amount of disposable income ($4.00).
+					Purchasing parity for like goods will determine how far that disposable
+					income will go in each city. <br>Data sourced from expatistan.com, a crowd-sourced
+					cost of living index. These values were then normalized to median U.S. values using
+					data from Wolfram-Alpha.
+				</p>
+			</div>
+			<div id="ex_section1" class="explanation">
+				<h2>After Essentials</h2>
+				<p>
+					After essentials shows the amount of income left over after taxes,
+					food, housing, insurance, and transportation needs have been met. The values
+					used are for a single adult household, and will not be accurate for
+					two-person plus households. Part of this data uses MIT's living wage data,
+					part uses average state/local tax burdens from Tax Foundation (a conservative
+					tax policy think tank) and part uses average effective
+					federal tax rate, supplied by the US Congressional Budget Office (CBO). MIT's living
+					wage calculations includes taxes on the amount required for a living wage, 
+					so state/local taxes and federal taxes are calculated only on the income outside 
+					of that amount. In particular, the average tax burden percentage is determined from 
+					the raw income, but is only applied to income <b>after</b> the living wage 
+					has been deducted. Canadian tax burdens calculated using a best fit line from
+					average tax rates from Ernst &amp Young (multinational professional services firm).
+					Canadian living wage data obtained from Statistics Canada's Market Basket Measure
+					(Admittedly, not the best measure of COL) and calculating pre tax earnings.
+			</div>
+			<div id="ex_section2" class="explanation">
+				<h2>Savings</h2>
+				<p>
+					Savings are calculated based on data from the previous section. Namely, yearly contribution 
+					values are initially 25% of <b>after essentials</b> values. As well, the annual percentage
+					rate is set to 7% initially. In depth analysis of savings/retirement plans are far beyond
+					the scope of this tool, so take this with a boulder sized grain of salt, as every
+					individual's situation is complex and nuanced. Interest in this graph compounds yearly,
+					contributions are made at the end of the year, and the principle amount is $0.
+				</p>
+				<div id="savings_city1" class="savings" style="float:left;">
+					<div title="name_city"><h3>City 1</h3></div>
+					<div title="yearly">Yearly rate:</div>
+					<div title="year1">Year 1:</div>
+					<div title="year5">Year 5:</div>
+					<div title="year10">Year 10:</div>
+					<div title="year20">Year 20:</div>
+					<div title="year30">Year 30:</div>			
+				</div>
+				<div id="savings_city2" class="savings" style="float:right;">
+					<div title="name_city"><h3>City 2</h3></div>
+					<div title="yearly">Yearly rate:</div>
+					<div title="year1">Year 1:</div>
+					<div title="year5">Year 5:</div>
+					<div title="year10">Year 10:</div>
+					<div title="year20">Year 20:</div>
+					<div title="year30">Year 30:</div>					
+				</div>
+			</div>			
+			<div id="ex_section3" class="explanation">
+				<h2>Cost of a House</h2>
+				<p>
+					In the first column is the median price of a house for each city. The following
+					columns are the <b>yearly</b> payments required to service a loan of shown duration.
+					The initial interest rate is 3.5%, 3.75%, and 4.0% fixed for the 10, 15, and 30 year
+					loans respectively.
+					House price data sourced from the National Association of Realtors, the Canadian Real
+					Estate Association, Zillow (for Anchorage, Detroit, and Pittsburg). Average rate
+					data sourced from Bankrate.
+				</p>
+			</div>
+		</div>
+	<script src="./build.js"></script>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<style>
+#header {
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:0px;
+}
+#nav {
+    line-height:30px;
+    background-color:rgba(240,240,240,0.89);
+    height:100%;
+    width:18%;
+	top:0px;
+	left:0px;
+    float:left;
+    padding:0px; 
+	position:fixed;
+	z-index:1;	
+}
+
+#nav_inner {
+	padding:0px;
+	font-family:Helvetica, Arial, sans-serif;
+	list-style-type: none;
+	text-align:center;
+}
+
+#graph_column {
+	left:20%;
+	position:relative;
+}
+
+#ex_column {
+	position:absolute;
+	top:120px;
+}
+
+#form {
+	width:100%; 
+	float:none;
+	padding:10px; 
+	height:100px; 
+	position:relative;
+	text-align:center;
+}
+/*
+#section {
+    width:60%;
+    float:none;
+    padding:10px;
+	position: relative;
+	display:inline-block;
+}
+*/
+
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px; 
+}
+
+#canvas {
+	
+}
+
+ul a {
+	color:inherit;
+	text-decoration:none;
+}
+
+.salary_input {
+	width:48%;
+	font-size:21pt;
+	font-family:Helvetica, Arial, sans-serif;
+}
+
+.nav_selected {
+	background-color: rgba(178, 229, 127, 0.8);
+}
+
+.explanation {
+	position:relative; 
+	margin-bottom:100px; 
+	margin-top:50px;
+	font-size:10pt;
+	font-family:Helvetica, Arial, sans-serif;
+	background-color: rgba(230, 230, 230, 0.5);
+	width:90%;
+	padding:13px;
+	overflow:auto;
+}
+
+.savings {
+	width:47%;
+	background-color:rgba(50,50,50,0.1);
+	padding-left:10px;
+	padding-bottom:10px;
+}
+
+</style>
