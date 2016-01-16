@@ -17,7 +17,9 @@ window.onload = function(){
 	global.maintainAspectRatio = false;
 	global.responsive = true;
 	global.multiTooltipTemplate = "<%= datasetLabel %> - <%= value %>";
-	
+	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		global.animationSteps = 10;
+	}
 	var graph_column = document.getElementById("graph_column");
 	
 	populateLists();
