@@ -10,14 +10,27 @@
 	<body>
 		<div id="nav">
 			<ul id="nav_inner">
+				<a href="#about"><li id="nav_about">About/Disclaimers</li></a>
 				<a href="#form" title="Salaries"><li id="salaries">Salaries</li></a>
 				<a href="#section0"><li id="nav0">Naive Comparison</li></a>
 				<a href="#section1"><li id="nav1">After Essentials</li></a>
 				<a href="#section2"><li id="nav2">Savings</li></a>				
 				<a href="#section3"><li id="nav3">Cost of a House</li></a>
 			</div>
-		</div>
-		<div id="graph_column">
+		</div>	
+		<div id="graph_column">	
+			<div id="about" style="padding: 10px; left: 200px; background-color:rgba(230,230,230,0.5);">
+				<h3>About this app</h3>
+				<p>
+					This app is useful for general comparisons between cities. It is not designed to give
+					financial advice to individual users. Because of the limitations of such a general tool,
+					it should be noted that there are no guarantees, waranties, or claims of accuracy that
+					constitute legal or financial advice. In order to better understand how each section
+					is calculated, and what exactly that means, read the explanation box to the right
+					of each graph. Any users looking for financial advice should consult with a certified
+					financial planner before making any financial or legal decisions.
+				</p>
+			</div>								
 			<div id="form">
 				<input type="number" id="first_salary" placeholder="City 1 Salary" class="salary_input" onkeypress="keyPress(event)">
 				<input type="number" id="second_salary" placeholder="City 2 Salary" class="salary_input" onkeypress="keyPress(event)"><br>
@@ -27,6 +40,7 @@
 			</div>
 		</div>
 		<div id="ex_column">
+			<div id="ex_about" class="hidden_explanation"></div>
 			<div id="ex_section0" class="explanation">
 				<h2>Naive comparison</h2>
 				<p>

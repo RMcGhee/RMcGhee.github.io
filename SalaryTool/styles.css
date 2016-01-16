@@ -92,6 +92,17 @@ ul a {
 	overflow:auto;
 }
 
+.hidden_explanation {
+	position:relative; 
+	margin-bottom:100px; 
+	margin-top:50px;
+	font-size:10pt;
+	font-family:Helvetica, Arial, sans-serif;
+	width:90%;
+	padding:13px;
+	overflow:auto;
+}
+
 .savings {
 	width:45%;
 	background-color:rgba(50,50,50,0.1);

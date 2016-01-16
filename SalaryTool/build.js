@@ -57,7 +57,12 @@ window.onresize = function(){
 }
 
 window.onscroll = function(){
-	var el = document.getElementById("form");
+	var el = document.getElementById("about");
+	if(el.getBoundingClientRect().bottom-60 > 0){
+		scrollHighlight(document.getElementById("nav_about"));
+		return;
+	}
+	el = document.getElementById("form");
 	if(el.getBoundingClientRect().bottom-60 > 0){
 		scrollHighlight(document.getElementById("salaries"));
 		return;
@@ -480,8 +485,12 @@ function sizeColumns(div_width, div_height){
 	ex_column.style.width = div_width+"px";
 	ex_column.style.height = (div_height*4)+"px";
 	ex_column.style.left = (30 + div_width + graph_column.offsetLeft)+"px";
-	var div;
-	var ex_div;
+	var div = document.getElementById("about");
+	var ex_div = document.getElementById("ex_about");
+	
+	div.style.width = div_width+"px";
+	div.style.height = div_height+"px";
+	ex_div.style.height = (div_height-90)+"px";
 	
 	for(i = 0; i < num_canv; i++){
 		div = document.getElementById("section"+i);
