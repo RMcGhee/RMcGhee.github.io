@@ -18,7 +18,7 @@ window.onload = function(){
 	global.responsive = true;
 	global.multiTooltipTemplate = "<%= datasetLabel %> - <%= value %>";
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-		global.animationSteps = 10;
+		global.animationSteps = 30;
 	}
 	var graph_column = document.getElementById("graph_column");
 	
