@@ -433,7 +433,7 @@ function monthlyPayment(principle, term_years, rate){
 }
 
 function updateCharts(){
-	for (c of charts){
+	for (c in charts){
 		c.update();
 	}
 }
