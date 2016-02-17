@@ -10,16 +10,39 @@
 	<body>
 		<div id="nav">
 			<ul id="nav_inner">
-				<a href="#about"><li id="nav_about">About/Disclaimers</li></a>
-				<a href="#form" title="Salaries"><li id="salaries">Salaries</li></a>
+				<a href="#form" title="Salaries"><li id="salaries">Start</li></a>
 				<a href="#section0"><li id="nav0">Naive Comparison</li></a>
 				<a href="#section1"><li id="nav1">After Essentials</li></a>
 				<a href="#section2"><li id="nav2">Savings</li></a>				
 				<a href="#section3"><li id="nav3">Cost of a House</li></a>
+				<a href="#about"><li id="nav_about">About/Disclaimers</li></a>
 			</div>
 		</div>	
-		<div id="graph_column">	
-			<div id="about" style="padding: 10px; left: 200px; background-color:rgba(230,230,230,0.5);">
+		<div id="graph_column" style="background-color:white;">		
+			<div id="start_top" style="padding: 10px; left: 200px; background-color:rgba(230,230,230,0.5);">
+				<h4>Put in a two salaries, and set a city for each. The example below shows a comparison between
+				Seattle and New York City, with salaries of $75,000 and $90,000.</h4>
+			</div>
+			<div id="form">
+				<input type="number" id="first_salary" placeholder="City 1 Salary" value="75000" class="salary_input" onkeypress="keyPress(event)">
+				<input type="number" id="second_salary" placeholder="City 2 Salary" value="90000" class="salary_input" onkeypress="keyPress(event)"><br>
+				<select id= "first_city" class="salary_input"></select>
+				<select id="second_city" class="salary_input"></select>
+				<button id="b_compute" type="button">Compare</button>
+			</div>
+			<div id="section0" style="float: left; padding: 10px; position: relative; margin-bottom: 40px;">
+				<canvas id="canvas0" style="padding: 10px;"></canvas>
+			</div>
+			<div id="section1" style="float: left; padding: 10px; position: relative; margin-bottom: 40px;">
+				<canvas id="canvas1" style="padding: 10px;"></canvas>
+			</div>
+			<div id="section2" style="float: left; padding: 10px; position: relative; margin-bottom: 40px;">
+				<canvas id="canvas2" style="padding: 10px;"></canvas>
+			</div>
+			<div id="section3" style="float: left; padding: 10px; position: relative; margin-bottom: 40px;">
+				<canvas id="canvas3" style="padding: 10px;"></canvas>
+			</div>
+			<div id="about" class="explanation">
 				<h3>About this app</h3>
 				<p>
 					This app is useful for general comparisons between cities. It is not designed to give
@@ -30,17 +53,10 @@
 					of each graph. Any users looking for financial advice should consult with a certified
 					financial planner before making any financial or legal decisions.
 				</p>
-			</div>								
-			<div id="form">
-				<input type="number" id="first_salary" placeholder="City 1 Salary" class="salary_input" onkeypress="keyPress(event)">
-				<input type="number" id="second_salary" placeholder="City 2 Salary" class="salary_input" onkeypress="keyPress(event)"><br>
-				<select id= "first_city" class="salary_input"></select>
-				<select id="second_city" class="salary_input"></select>
-				<button id="b_compute" type="button">Computate!</button>
 			</div>
 		</div>
 		<div id="ex_column">
-			<div id="ex_about" class="hidden_explanation"></div>
+			<div id="ex_start" class="hidden_explanation"></div>
 			<div id="ex_section0" class="explanation">
 				<h2>Naive comparison</h2>
 				<p>

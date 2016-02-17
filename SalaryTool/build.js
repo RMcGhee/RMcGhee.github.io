@@ -24,14 +24,12 @@ window.onload = function(){
 	
 	populateLists();
 	
-	for(i = 0; i < num_canv; i++){
-		createGraphDiv(graph_column, i);
-	}
-	
 	window.onresize();
 	window.onscroll();
 		
 	initCharts();
+	document.getElementById("about").style["padding"] = "15px";
+	document.getElementById("about").style["margin-left"] = "10px";
 	
 	document.getElementById("b_compute").addEventListener("click", bCompute);
 	updateCharts();
@@ -57,16 +55,17 @@ window.onresize = function(){
 }
 
 window.onscroll = function(){
-	var el = document.getElementById("about");
-	if(el.getBoundingClientRect().bottom-60 > 0){
-		scrollHighlight(document.getElementById("nav_about"));
-		return;
-	}
-	el = document.getElementById("form");
+	var el = document.getElementById("form");
 	if(el.getBoundingClientRect().bottom-60 > 0){
 		scrollHighlight(document.getElementById("salaries"));
 		return;
 	}
+	el = document.getElementById("about");
+	if(el.getBoundingClientRect().bottom <= window.innerHeight){
+		scrollHighlight(document.getElementById("nav_about"));
+		return;
+	}
+	
 	for(i = 0; i < num_charts; i++){
 		el = document.getElementById("section"+i);
 		if(el.getBoundingClientRect().bottom-60 > 0){
@@ -82,13 +81,6 @@ function keyPress(e){
 	}
 }
 
-function initCharts(){
-	updateNaive(60000, 80000, "City", "City");
-	updateEssentials(60000, 80000, "City", "City");
-	updateSavings("City", "City");
-	updateHouse("City", "City");
-}
-
 function bCompute(){
 	var first_salary = document.getElementById("first_salary").value;
 	var second_salary = document.getElementById("second_salary").value;
@@ -101,6 +93,18 @@ function bCompute(){
 	updateSavings(first_city, second_city);
 	
 	updateCharts();
+}
+
+function initCharts(){
+	var f_sal = document.getElementById("first_salary").value;
+	var s_sal = document.getElementById("second_salary").value;
+	var f_city = document.getElementById("first_city").value;
+	var s_city = document.getElementById("second_city").value;
+	
+	updateNaive(f_sal, s_sal, f_city, s_city);
+	updateEssentials(f_sal, s_sal, f_city, s_city);
+	updateSavings(f_city, s_city);
+	updateHouse(f_city, s_city);
 }
 
 function updateNaive(first_salary, second_salary, first_city, second_city){
@@ -334,36 +338,6 @@ function updateSavings(first_city, second_city){
 	charts[2] = new Chart(ctx).Bar(savings_data, {});
 }
 
-function investmentGrowth(principle, rate, term_years, yearly_contribution){
-	rate = 1 + rate;
-	var balance = principle*Math.pow(rate, term_years);
-	balance += (yearly_contribution*((Math.pow(rate, term_years+1)-rate)/(rate-1)));
-	return Math.round(balance);
-}
-
-function formatNumber(num){
-	num = "" + num;
-	var curr_index = 0;
-	var max_len = num.length;
-	var result = "";
-	switch(max_len % 3){
-		case 0:
-			result += num.charAt(curr_index++);
-		case 2:
-			result += num.charAt(curr_index++);
-		case 1:
-			result += num.charAt(curr_index++);
-		while(curr_index < max_len){
-			result += ",";
-			result += num.charAt(curr_index++);
-			result += num.charAt(curr_index++);
-			result += num.charAt(curr_index++);
-		}
-	}
-	
-	return result;
-}
-
 function updateHouse(first_city, second_city){
 	if(charts[3] != null){
 		charts[3].destroy();
@@ -425,17 +399,47 @@ function updateHouse(first_city, second_city){
 	charts[3] = new Chart(ctx).Bar(house_data, {});
 }
 
+function updateCharts(){
+	for (var ic = 0; ic < 3; ic++){
+		charts[ic].update();
+	}
+}
+
+function investmentGrowth(principle, rate, term_years, yearly_contribution){
+	rate = 1 + rate;
+	var balance = principle*Math.pow(rate, term_years);
+	balance += (yearly_contribution*((Math.pow(rate, term_years+1)-rate)/(rate-1)));
+	return Math.round(balance);
+}
+
+function formatNumber(num){
+	num = "" + num;
+	var curr_index = 0;
+	var max_len = num.length;
+	var result = "";
+	switch(max_len % 3){
+		case 0:
+			result += num.charAt(curr_index++);
+		case 2:
+			result += num.charAt(curr_index++);
+		case 1:
+			result += num.charAt(curr_index++);
+		while(curr_index < max_len){
+			result += ",";
+			result += num.charAt(curr_index++);
+			result += num.charAt(curr_index++);
+			result += num.charAt(curr_index++);
+		}
+	}
+	
+	return result;
+}
+
 function monthlyPayment(principle, term_years, rate){
 	rate = rate/12;
 	var term = term_years*12;
 	return Math.round(principle * (rate*Math.pow((1+rate), term)) / 
 			(Math.pow((1+rate), term) - 1));
-}
-
-function updateCharts(){
-	for (var ic = 0; ic < 3; ic++){
-		charts[ic].update();
-	}
 }
 
 function scrollHighlight(new_focus){
@@ -461,21 +465,6 @@ function sizeForms(win_width){
 	}
 }
 
-function createGraphDiv(div_parent, div_num){
-	var chart_style = "float:left; padding:0px; position:relative;"
-	chart_style += " margin-bottom:40px;";
-	
-	var new_div = document.createElement("div");
-	new_div.setAttribute("id", "section"+div_num);
-	new_div.style.cssText = chart_style;
-	
-	div_parent.appendChild(new_div);
-	
-	new_div.innerHTML = "<canvas id='canvas"+div_num+"'></canvas>";
-	var can = document.getElementById("canvas"+div_num);
-	can.style.cssText = "padding:10px;";
-}
-
 function sizeColumns(div_width, div_height){
 	var graph_column = document.getElementById("graph_column");
 	var ex_column = document.getElementById("ex_column");
@@ -485,8 +474,9 @@ function sizeColumns(div_width, div_height){
 	ex_column.style.width = div_width+"px";
 	ex_column.style.height = (div_height*4)+"px";
 	ex_column.style.left = (30 + div_width + graph_column.offsetLeft)+"px";
-	var div = document.getElementById("about");
-	var ex_div = document.getElementById("ex_about");
+	
+	var div = document.getElementById("start_top");
+	var ex_div = document.getElementById("ex_start");
 	
 	div.style.width = div_width+"px";
 	div.style.display = "inline-block;";
@@ -499,7 +489,19 @@ function sizeColumns(div_width, div_height){
 		div.style.width = div_width+"px";
 		div.style.height = div_height+"px";
 		ex_div.style.height = (div_height-90)+"px";
+		ex_div.style.top = (elOffsetTop("section"+i) + 60)+"px";
+		ex_div.style.position = "absolute";
 	}
+	
+	div = document.getElementById("about");
+	div.style.width = div_width+"px";
+}
+
+function elOffsetTop(el_name){
+	var el_bounds = document.getElementById(el_name).getBoundingClientRect();
+	var doc_el = document.documentElement;
+	
+	return (el_bounds.top + (window.pageYOffset || doc_el.scrollTop || 0));
 }
 
 function populateLists(){
@@ -518,7 +520,8 @@ function populateLists(){
 		new_option.innerHTML = key;		
 		select2.appendChild(new_option);
 	}
-	//<option value="Seattle, WA">Seattle, WA</option>
+	select1.value = "Seattle, WA";
+	select2.value = "New York City, NY";
 }
 
 function averageFederalRate(raw_income, location){

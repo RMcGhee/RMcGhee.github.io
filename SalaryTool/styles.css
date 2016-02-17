@@ -32,7 +32,7 @@
 
 #ex_column {
 	position:absolute;
-	top:120px;
+	top:0px;
 }
 
 #form {
@@ -82,8 +82,9 @@ ul a {
 
 .explanation {
 	position:relative; 
-	margin-bottom:100px; 
-	margin-top:50px;
+	margin-bottom:0px; 
+	margin-top:0px;
+	margin-left:30px;
 	font-size:10pt;
 	font-family:Helvetica, Arial, sans-serif;
 	background-color: rgba(230, 230, 230, 0.5);
@@ -95,7 +96,7 @@ ul a {
 .hidden_explanation {
 	position:relative; 
 	margin-bottom:100px; 
-	margin-top:50px;
+	margin-top:0px;
 	font-size:10pt;
 	font-family:Helvetica, Arial, sans-serif;
 	width:90%;
