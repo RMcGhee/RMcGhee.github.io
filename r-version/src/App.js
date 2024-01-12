@@ -1,11 +1,17 @@
 import React from 'react';
-import HomePage from './HomePage'; // Adjust the path if necessary
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import theme from './theme';
+import HomePage from './HomePage';
 
 function App() {
   return (
-    <div className="App">
-      <HomePage />
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className="App">
+        <HomePage />
+      </div>
+    </ThemeProvider>
   );
 }
 
